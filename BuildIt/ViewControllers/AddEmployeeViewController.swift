@@ -57,9 +57,11 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
         dataString = dataString + "&pw=\(passwordText.text!)"
         dataString = dataString + "&admin=\(adm)"
         dataString = dataString + "&pn=\(phoneNumberText.text!)"
-        let uploadData = dataString.data(using: .utf8)!
+        request.httpBody = dataString.data(using: .utf8)
+        //let uploadData = dataString.data(using: .utf8)!
         do{
-            let uploadD = URLSession.shared.uploadTask(with: request, from: uploadData){
+            //URLSession.shared.uploadTask(with: request, from: uploadData){
+            let uploadD = URLSession.shared.dataTask(with: request){
                 data,response,error in
                 if error != nil{
                     DispatchQueue.main.async
