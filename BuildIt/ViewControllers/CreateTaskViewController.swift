@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateTaskViewController: UIViewController {
+class CreateTaskViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
@@ -17,7 +17,8 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet weak var jobsiteLabel: UILabel!
     @IBOutlet weak var jobsiteText: UITextField!
     @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var detailsText: UITextField!
+    
+    @IBOutlet weak var detailsText: UITextView!
     var firstName = ""
     var lastName = ""
     var admin = ""
@@ -29,7 +30,11 @@ class CreateTaskViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //detailsText.text = "type here..."
+        detailsText.layer.borderWidth = 1
+        detailsText.layer.borderColor = UIColor.lightGray.cgColor
+        detailsText.textContainer.maximumNumberOfLines = 7
+        detailsText.textContainer.lineBreakMode = .byTruncatingTail
         // Do any additional setup after loading the view.
     }
     func upload(){
