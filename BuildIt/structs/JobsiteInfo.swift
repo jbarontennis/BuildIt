@@ -13,7 +13,7 @@ protocol JobsiteInfoDelegate{
 class JobsiteInfo: NSObject {
     var delegate:JobsiteInfoDelegate?
     func getItems(site: String){
-        let serviceUrl = "http://builditios.com/cap2.php"
+        let serviceUrl = "http://192.168.1.122/capstone/cap2.php"
         let url = URL(string: serviceUrl)
         if let url = url{
             let session = URLSession(configuration: .default)
@@ -41,9 +41,9 @@ class JobsiteInfo: NSObject {
             
             flag = false
             let jsonDict = jsonResult as! [String:String]
-            let site = jsonDict["Jobsite"]!
-            let first = jsonDict["FirstName"]!
-            let last = jsonDict["LastName"]!
+            let site = jsonDict["jobsite"]!
+            let first = jsonDict["firstName"]!
+            let last = jsonDict["lastName"]!
             if(firsts.isEmpty){
                 firsts.append(first)
                 lasts.append(last)
@@ -62,7 +62,7 @@ class JobsiteInfo: NSObject {
             }
             
             if(sites == site && flag == false){
-                let tasks = myTasks(number: jsonDict["Number"]!, details: jsonDict["Details"]!, jobsite: site, firstName: first, lastName: last)
+                let tasks = myTasks(number: jsonDict["number"]!, details: jsonDict["details"]!, jobsite: site, firstName: first, lastName: last)
                 taskArray.append(tasks)
             }
             }

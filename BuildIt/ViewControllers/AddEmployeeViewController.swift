@@ -47,46 +47,23 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     func upload(){
-        let url = NSURL(string: "http://builditios.com/addEmploy.php")
+        let url = NSURL(string: "http://192.168.1.122/capstone/addEmploy.php")
         var request = URLRequest(url: url! as URL)
         request.httpMethod = "POST"
-        var dataString = "secretWord=tennis"
-        dataString = dataString + "&fn=\(firstNameText.text!)"
+        var dataString = "fn=\(firstNameText.text!)"
         dataString = dataString + "&ln=\(lastNameText.text!)"
         dataString = dataString + "&un=\(userNameText.text!)"
         dataString = dataString + "&pw=\(passwordText.text!)"
         dataString = dataString + "&admin=\(adm)"
         dataString = dataString + "&pn=\(phoneNumberText.text!)"
-        request.httpBody = dataString.data(using: .utf8)
-        //let uploadData = dataString.data(using: .utf8)!
+        //request.httpBody = dataString.data(using: .utf8)
+        let uploadData = dataString.data(using: .utf8)!
         do{
-            //URLSession.shared.uploadTask(with: request, from: uploadData){
-            let uploadD = URLSession.shared.dataTask(with: request){
+            let uploadD = URLSession.shared.uploadTask(with: request, from: uploadData){
+            //let uploadD = URLSession.shared.dataTask(with: request){
                 data,response,error in
                 if error != nil{
-                    DispatchQueue.main.async
-                    {
-                    let alert = UIAlertController(title: "upload didnt work?", message: "connection to server did not work", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:nil))
-                    self.present(alert, animated: true, completion: nil)
-                    }
-                }else{
-                    if let unwrappedData = data{
-                        let returnedData = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue)
-                        if returnedData == "1"{
-                            DispatchQueue.main.async{
-                                let alert = UIAlertController(title: "upload OK?", message: "looks like upload and insert into database worked", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:nil))
-                                self.present(alert, animated: true, completion: nil)                            }
-                        }else{
-                            DispatchQueue.main.async{
-                                
-                            let alert = UIAlertController(title: "upload didnt work?", message: "insert into database did not work", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:nil))
-                            self.present(alert, animated: true, completion: nil)
-                            }
-                        }
-                    }
+                    print("error")
                 }
             }
             uploadD.resume()
@@ -103,11 +80,13 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
             vc.lastName = self.lastName
             vc.admin = self.admin
     }
+    func textLimit(existingText: String?, newText: String, limit:Int)->Bool{
+        let text = existingText ?? ""
+        let isAtLimit = text.count + newText.count<=limit
+        return isAtLimit
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let max = 10
-        let currentString: NSString = (firstNameText.text ?? "") as NSString
-        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
-        return newString.length <= max
+        return self.textLimit(existingText: textField.text, newText: string, limit: 10)
     }
     /*
     // MARK: - Navigation

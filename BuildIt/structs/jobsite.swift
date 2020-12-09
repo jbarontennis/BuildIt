@@ -9,4 +9,6 @@ import Foundation
 
 struct jobsite{
     var address = ""
+    var completion = ""
+    var picture = ""
 }

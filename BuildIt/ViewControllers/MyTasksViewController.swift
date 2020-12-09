@@ -12,6 +12,7 @@ class MyTasksViewController: UIViewController, TaskModelDelegate, UITableViewDat
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var lNameLabel: UILabel!
     @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var number = ""
     var firstName = ""
@@ -64,6 +65,7 @@ class MyTasksViewController: UIViewController, TaskModelDelegate, UITableViewDat
         tasksModel.getItems(f:firstName, l:lastName)
         tasksModel.delegate = self
         menuButton.contentMode = .scaleAspectFit
+        dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.none)
         
        
         

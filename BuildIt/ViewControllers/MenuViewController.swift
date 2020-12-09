@@ -83,8 +83,14 @@ class MenuViewController: UIViewController {
             vc.admin = self.admin
             view.window?.rootViewController = vc
             
-        }
-          }
+        }else if(createT){
+            let vc = segue.destination as! CreateTaskViewController
+            vc.firstName = self.firstName
+            vc.lastName = self.lastName
+            vc.admin = self.admin
+            view.window?.rootViewController = vc
+            
+        }          }
     
     /*
     // MARK: - Navigation

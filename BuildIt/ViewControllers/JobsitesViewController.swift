@@ -14,7 +14,7 @@ class JobsitesViewController: UIViewController, jobsiteModelDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath)
-        let output =  "Address: " + jobsites[indexPath.row].address
+        let output =  "Address: " + jobsites[indexPath.row].address + "\n" + "Completion date: " + jobsites[indexPath.row].completion
         cell.textLabel?.numberOfLines = 1
         cell.textLabel?.text = output
         cell.accessoryType = .detailDisclosureButton

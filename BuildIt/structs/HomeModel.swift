@@ -14,7 +14,7 @@ class HomeModel: NSObject {
     
     var delegate:HomeModelDelegate?
     func getItems(){
-        let serviceUrl = "http://builditios.com/index.php"
+        let serviceUrl = "http://192.168.1.122/capstone/cap.php"
         let url = URL(string: serviceUrl)
         if let url = url{
             let session = URLSession(configuration: .default)
@@ -39,7 +39,7 @@ class HomeModel: NSObject {
             
             let jsonDict = jsonResult as! [String:String]
             //create new employee and give it attributes
-            let employ = employees(firstName: jsonDict["FirstName"]!, lastName: jsonDict["LastName"]!, userName: jsonDict["UserName"]!, pass: jsonDict["Pass"]!, admin: jsonDict["Admin"]!, phoneNumber: jsonDict["PhoneNumber"]!)
+            let employ = employees(firstName: jsonDict["firstName"]!, lastName: jsonDict["lastName"]!, userName: jsonDict["userName"]!, pass: jsonDict["password"]!, admin: jsonDict["admin"]!, phoneNumber: jsonDict["phoneNumber"]!)
                 employArray.append(employ)
             }
             

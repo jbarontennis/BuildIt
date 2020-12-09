@@ -13,7 +13,7 @@ protocol TaskModelDelegate{
 class taskModel: NSObject {
     var delegate:TaskModelDelegate?
     func getItems(f: String, l: String){
-        let serviceUrl = "http://builditios.com/cap2.php"
+        let serviceUrl = "http://192.168.1.122/capstone/cap2.php"
         let url = URL(string: serviceUrl)
         if let url = url{
             let first = f
@@ -39,11 +39,11 @@ class taskModel: NSObject {
         for jsonResult in jsonArray{
             
             let jsonDict = jsonResult as! [String:String]
-            let first = jsonDict["FirstName"]!
-            let last = jsonDict["LastName"]!
+            let first = jsonDict["firstName"]!
+            let last = jsonDict["lastName"]!
             //create new employee and give it attributes
             if(first == fi && last == la){
-            let tasks = myTasks(number: jsonDict["Number"]!, details: jsonDict["Details"]!, jobsite: jsonDict["Jobsite"]!, firstName: first, lastName: last)
+            let tasks = myTasks(number: jsonDict["number"]!, details: jsonDict["details"]!, jobsite: jsonDict["jobsite"]!, firstName: first, lastName: last)
                 taskArray.append(tasks)
             }
             }

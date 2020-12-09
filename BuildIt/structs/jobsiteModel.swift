@@ -12,7 +12,7 @@ protocol jobsiteModelDelegate {
 class jobsiteModel: NSObject {
     var delegate:jobsiteModelDelegate?
     func getItems(){
-        let serviceUrl = "http://builditios.com/cap3.php"
+        let serviceUrl = "http://192.168.1.122/capstone/cap3.php"
         let url = URL(string: serviceUrl)
         if let url = url{
             let session = URLSession(configuration: .default)
@@ -37,7 +37,10 @@ class jobsiteModel: NSObject {
             
             let jsonDict = jsonResult as! [String:String]
             //create new employee and give it attributes
-            let job = jobsite(address: jsonDict["Address"]!)
+            let addy = jsonDict["address"]!
+            let comp = jsonDict["completion"]!
+            let pic = jsonDict["picture"]!
+            let job = jobsite(address: addy, completion: comp, picture: pic)
             jobsites.append(job)
             }
             

@@ -26,10 +26,11 @@ class CompleteTaskViewController: UIViewController {
         performSegue(withIdentifier: "endOfPopup", sender: self)    }
     
     func upload(number:String){
-        let url = NSURL(string: "http://builditios.com/completeTest.php")
+        let url = NSURL(string: "http://192.168.1.122/capstone/completeTask.php")
         var request = URLRequest(url: url! as URL)
         request.httpMethod = "POST"
-        let deleteData = id.data(using: .utf8)!
+        let dataString = "taskid=\(id)"
+        let deleteData = dataString.data(using: .utf8)!
         do{
             let uploadTask = URLSession.shared.uploadTask(with: request, from: deleteData){
                 data,response,error in

@@ -569,7 +569,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Tasks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2A-XB-y2B">
-                                <rect key="frame" x="114" y="62" width="186" height="50"/>
+                                <rect key="frame" x="114" y="31" width="186" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LRW-hj-DdO"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="186" id="aUY-KR-iGA"/>
@@ -578,23 +578,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehx-2F-ODb">
+                                <rect key="frame" x="132" y="101" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="1Za-mJ-hxo"/>
+                                    <constraint firstAttribute="height" constant="30" id="Hgk-0q-a2B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2W7-cT-eIR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ehx-2F-ODb" firstAttribute="centerX" secondItem="h2A-XB-y2B" secondAttribute="centerX" id="2xA-If-PQO"/>
                             <constraint firstItem="rrj-aQ-Qjl" firstAttribute="leading" secondItem="2W7-cT-eIR" secondAttribute="leading" constant="20" id="4Nu-a9-xdU"/>
                             <constraint firstItem="5GU-3Q-Qy9" firstAttribute="leading" secondItem="rrj-aQ-Qjl" secondAttribute="leading" id="Clx-ye-OXP"/>
                             <constraint firstItem="h2A-XB-y2B" firstAttribute="centerX" secondItem="5GU-3Q-Qy9" secondAttribute="centerX" id="GFg-nv-KrE"/>
-                            <constraint firstItem="h2A-XB-y2B" firstAttribute="top" secondItem="2W7-cT-eIR" secondAttribute="top" constant="62" id="OKw-CM-PFh"/>
+                            <constraint firstItem="h2A-XB-y2B" firstAttribute="top" secondItem="2W7-cT-eIR" secondAttribute="top" constant="31" id="OKw-CM-PFh"/>
                             <constraint firstItem="h2A-XB-y2B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rrj-aQ-Qjl" secondAttribute="trailing" constant="8" symbolic="YES" id="WCA-pY-OCl"/>
+                            <constraint firstItem="ehx-2F-ODb" firstAttribute="top" secondItem="h2A-XB-y2B" secondAttribute="bottom" constant="20" id="bLy-Sq-gPv"/>
                             <constraint firstItem="h2A-XB-y2B" firstAttribute="centerX" secondItem="fRy-RY-MU4" secondAttribute="centerX" id="jky-S7-l2S"/>
                             <constraint firstItem="5GU-3Q-Qy9" firstAttribute="bottom" secondItem="2W7-cT-eIR" secondAttribute="bottom" id="oBa-Ar-MZs"/>
-                            <constraint firstItem="5GU-3Q-Qy9" firstAttribute="top" secondItem="h2A-XB-y2B" secondAttribute="bottom" constant="86" id="rfx-jB-BUk"/>
+                            <constraint firstItem="5GU-3Q-Qy9" firstAttribute="top" secondItem="h2A-XB-y2B" secondAttribute="bottom" constant="117" id="rfx-jB-BUk"/>
                             <constraint firstItem="rrj-aQ-Qjl" firstAttribute="top" secondItem="2W7-cT-eIR" secondAttribute="top" constant="20" id="tOh-Oc-FJn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YVL-Yc-faD"/>
                     <connections>
+                        <outlet property="dateLabel" destination="ehx-2F-ODb" id="StY-Im-L1D"/>
                         <outlet property="menuButton" destination="rrj-aQ-Qjl" id="yEI-8w-2RG"/>
                         <outlet property="myTaskTable" destination="5GU-3Q-Qy9" id="0Gt-wC-rpI"/>
                         <segue destination="spT-RY-3NN" kind="presentation" identifier="taskCompletePopup" id="EkO-8f-8Zm"/>
@@ -830,6 +843,7 @@
                                 </state>
                                 <connections>
                                     <action selector="menuButton:" destination="1Uo-FE-qjd" eventType="touchUpInside" id="zNI-OW-F4t"/>
+                                    <segue destination="OPP-yq-t5u" kind="show" id="UqB-n7-py2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZ3-kN-40Q">
@@ -971,7 +985,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4qr-oD-zT9"/>
+        <segue reference="UqB-n7-py2"/>
         <segue reference="Gi0-cP-a7V"/>
     </inferredMetricsTieBreakers>
     <resources>
