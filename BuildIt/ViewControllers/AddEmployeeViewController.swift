@@ -43,6 +43,10 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lastNameText.delegate = self
+        phoneNumberText.delegate = self
+        userNameText.delegate = self
+        passwordText.delegate = self
         // Do any additional setup after loading the view.
     }
     func upload(){
@@ -81,7 +85,13 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
     }
    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let max = 10
+        let max:Int
+        if(textField == userNameText || textField == passwordText){
+            max = 30
+        }else{
+            max = 10
+        }
+        
         let currentString: NSString = textField.text! as NSString
         let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
         return newString.length <= max
