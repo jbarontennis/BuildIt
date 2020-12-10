@@ -11,14 +11,23 @@ class JobsitesViewController: UIViewController, jobsiteModelDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return jobsites.count
     }
+    let myImages: [UIImage] = []
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath)
-            let output =  "Address: " + jobsites[indexPath.row].address + "\n" + "Completion date: " + jobsites[indexPath.row].completion
+       // cell.imageView?.frame = CGRect(x: (cell.imageView?.frame.origin.x)!, y: (cell.imageView?.frame.origin.y)!, width: 10, height: 10)
+        
+        cell.imageView?.image = UIImage(named: jobsites[indexPath.row].picture)!
+        
+        let output =  "Address: " + jobsites[indexPath.row].address + "\n" + "Completion date: " + jobsites[indexPath.row].completion
+       // Image("hd")
+            
+        
         //let image : UIImage = UIImage(named: jobsites[indexPath.row].picture)!
+        
         //cell.imageView?.image = image
         //print("the loaded image: \(image)")
-        cell.textLabel?.numberOfLines = 3
+        cell.textLabel?.numberOfLines = 4
         cell.textLabel?.text = output
         cell.accessoryType = .detailDisclosureButton
     

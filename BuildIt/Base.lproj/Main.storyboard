@@ -159,15 +159,36 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddq-1J-7Up">
-                                <rect key="frame" x="0.0" y="200" width="414" height="588"/>
+                                <rect key="frame" x="0.0" y="202" width="414" height="586"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="2" indentationWidth="0.0" reuseIdentifier="jobCell" id="dRe-lg-gsj">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="2" indentationWidth="0.0" reuseIdentifier="jobCell" textLabel="6uq-Eu-E67" detailTextLabel="9X1-0N-stQ" imageView="pYx-4p-mOq" style="IBUITableViewCellStyleSubtitle" id="dRe-lg-gsj">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dRe-lg-gsj" id="mqe-SH-Fwo">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6uq-Eu-E67">
+                                                    <rect key="frame" x="20" y="10" width="33" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9X1-0N-stQ">
+                                                    <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="pYx-4p-mOq">
+                                                    <rect key="frame" x="20" y="0.0" width="84" height="55.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                                </imageView>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -183,14 +204,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nj3-5m-tMw" firstAttribute="top" secondItem="2ft-Xd-mjp" secondAttribute="top" constant="74" id="BRU-MV-zIN"/>
-                            <constraint firstItem="ddq-1J-7Up" firstAttribute="top" secondItem="nj3-5m-tMw" secondAttribute="bottom" constant="90" id="FyG-nb-c9t"/>
+                            <constraint firstItem="ddq-1J-7Up" firstAttribute="top" secondItem="nj3-5m-tMw" secondAttribute="bottom" constant="92" id="FyG-nb-c9t"/>
                             <constraint firstItem="2ft-Xd-mjp" firstAttribute="bottom" secondItem="ddq-1J-7Up" secondAttribute="bottom" constant="20" id="Jem-Y5-CcE"/>
                             <constraint firstItem="2ft-Xd-mjp" firstAttribute="trailing" secondItem="ddq-1J-7Up" secondAttribute="trailing" id="KlE-aJ-e4p"/>
-                            <constraint firstItem="2ft-Xd-mjp" firstAttribute="trailing" secondItem="nj3-5m-tMw" secondAttribute="trailing" constant="152" id="LbB-nI-fz8"/>
-                            <constraint firstItem="ddq-1J-7Up" firstAttribute="top" secondItem="2ft-Xd-mjp" secondAttribute="top" constant="200" id="R69-tO-q5a"/>
+                            <constraint firstItem="ddq-1J-7Up" firstAttribute="top" secondItem="2ft-Xd-mjp" secondAttribute="top" constant="202" id="R69-tO-q5a"/>
                             <constraint firstItem="xXY-Zr-OKL" firstAttribute="leading" secondItem="2ft-Xd-mjp" secondAttribute="leading" constant="20" id="emx-8K-gzK"/>
+                            <constraint firstItem="nj3-5m-tMw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2ft-Xd-mjp" secondAttribute="leading" symbolic="YES" id="iaW-Xp-ua5"/>
                             <constraint firstItem="ddq-1J-7Up" firstAttribute="leading" secondItem="2ft-Xd-mjp" secondAttribute="leading" id="kIa-lb-4WX"/>
-                            <constraint firstItem="nj3-5m-tMw" firstAttribute="leading" secondItem="2ft-Xd-mjp" secondAttribute="leading" constant="153" id="me0-OF-yKO"/>
+                            <constraint firstItem="2ft-Xd-mjp" firstAttribute="trailing" secondItem="nj3-5m-tMw" secondAttribute="trailing" constant="152" id="wMy-zP-c6y"/>
                             <constraint firstItem="xXY-Zr-OKL" firstAttribute="top" secondItem="2ft-Xd-mjp" secondAttribute="top" constant="20" id="wsM-9s-esF"/>
                         </constraints>
                     </view>
@@ -202,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDB-EE-p5G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1297" y="-640"/>
+            <point key="canvasLocation" x="1295.6521739130435" y="-640.17857142857144"/>
         </scene>
         <!--Job Info View Controller-->
         <scene sceneID="dSJ-bT-a3G">
@@ -1007,6 +1028,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Akg-xH-tvl"/>
         <segue reference="b5s-DP-Ngw"/>
         <segue reference="Gi0-cP-a7V"/>
     </inferredMetricsTieBreakers>
