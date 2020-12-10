@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, HomeModelDelegate {
+class LoginViewController: UIViewController, HomeModelDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var usernamelabel: UILabel!
     @IBOutlet weak var usernametext: UITextField!
@@ -15,6 +15,7 @@ class LoginViewController: UIViewController, HomeModelDelegate {
     @IBOutlet weak var passwordtext: UITextField!
     @IBOutlet weak var loginbut: UIButton!
     @IBOutlet weak var errorlabel: UILabel!
+    
     var homeModel = HomeModel()
     
     var user = Array<String>()
@@ -32,6 +33,8 @@ class LoginViewController: UIViewController, HomeModelDelegate {
         // Do any additional setup after loading the view.
         homeModel.getItems()
         homeModel.delegate = self
+        usernametext.delegate = self
+        passwordtext.delegate = self
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
@@ -44,6 +47,15 @@ class LoginViewController: UIViewController, HomeModelDelegate {
     }
     @objc func doneClicked(){
         view.endEditing(true)
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let max = 30
+        
+        
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= max
+        
     }
     func setUpElements(){
         errorlabel.alpha = 0

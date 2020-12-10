@@ -9,6 +9,7 @@ import UIKit
 
 class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var firstNameText: UITextField!
@@ -23,7 +24,15 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
     var lastName = ""
     var admin = ""
     @IBAction func submitButton(_ sender: Any) {
-        upload()
+        if(firstNameText.text == ""||lastNameText.text == ""||jobsiteText.text == ""||detailsText.text == ""){
+            fillIn()
+        }else{
+
+           upload()
+        }
+    }
+    func fillIn(){
+        errorLabel.alpha = 1
     }
     @IBAction func menuButton(_ sender: Any) {
         
@@ -39,6 +48,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         lastNameText.delegate = self
         jobsiteText.delegate = self
         detailsText.delegate = self
+        errorLabel.alpha = 0
         // Do any additional setup after loading the view.
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -81,6 +91,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         lastNameText.text = ""
         detailsText.text = ""
         jobsiteText.text = ""
+        errorLabel.alpha = 0
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
