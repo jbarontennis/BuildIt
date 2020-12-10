@@ -21,16 +21,29 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordText: UITextField!
     
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var adminButton: UISwitch!
     @IBOutlet weak var adminLabel: UILabel!
     @IBAction func adminSwitch(_ sender: Any) {
-        adm = "1"
+        if(adminButton.isOn){
+            adm = "1"
+        }else{
+        adm = "0"
+        }
     }
     @IBOutlet weak var phoneNumberLabel: UILabel!
     
     @IBOutlet weak var phoneNumberText: UITextField!
     @IBAction func submitButton(_ sender: Any) {
-        upload()
-        
+        if(firstNameText.text == ""||lastNameText.text == ""||userNameText.text == ""||passwordText.text == ""||phoneNumberText.text == ""){
+            fillIn()
+        }else{
+
+           upload()
+        }
+    }
+    func fillIn(){
+        errorLabel.alpha = 1
     }
     @IBAction func menuButton(_ sender: Any) {
        
@@ -59,6 +72,7 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
         userNameText.inputAccessoryView = toolBar
         passwordText.inputAccessoryView = toolBar
         phoneNumberText.inputAccessoryView = toolBar
+        errorLabel.alpha = 0
     }
     @objc func doneClicked(){
         view.endEditing(true)
@@ -91,6 +105,8 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
         userNameText.text = ""
         passwordText.text = ""
         phoneNumberText.text = ""
+        errorLabel.alpha = 0
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
             let vc = segue.destination as! MenuViewController

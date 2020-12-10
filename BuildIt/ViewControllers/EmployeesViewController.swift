@@ -31,8 +31,9 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
         phone.append(contentsOf: temp[range2] + "-")
         let range3 = temp.index(temp.startIndex, offsetBy: 6)..<temp.index(temp.startIndex, offsetBy: 10)
         phone.append(contentsOf: temp[range3])
-        cell.textLabel?.text = employee[indexPath.row].firstName + " " + employee[indexPath.row].lastName  + phone
-         return cell
+        cell.textLabel?.text = employee[indexPath.row].firstName + " " + employee[indexPath.row].lastName  + "\n" + "Phone Number: " + phone
+        cell.textLabel?.numberOfLines = 2
+        return cell
     }
     
     override func viewDidLoad() {
