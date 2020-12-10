@@ -47,8 +47,23 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
         phoneNumberText.delegate = self
         userNameText.delegate = self
         passwordText.delegate = self
-        // Do any additional setup after loading the view.
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.doneClicked))
+        toolBar.setItems([doneButton], animated: false)
+        
+        
+        firstNameText.inputAccessoryView = toolBar
+        lastNameText.inputAccessoryView = toolBar
+        userNameText.inputAccessoryView = toolBar
+        passwordText.inputAccessoryView = toolBar
+        phoneNumberText.inputAccessoryView = toolBar
     }
+    @objc func doneClicked(){
+        view.endEditing(true)
+    }
+
     func upload(){
         let url = NSURL(string: "http://192.168.1.122/capstone/addEmploy.php")
         var request = URLRequest(url: url! as URL)
