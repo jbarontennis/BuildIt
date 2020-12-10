@@ -15,6 +15,9 @@ class JobsitesViewController: UIViewController, jobsiteModelDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath)
             let output =  "Address: " + jobsites[indexPath.row].address + "\n" + "Completion date: " + jobsites[indexPath.row].completion
+        //let image : UIImage = UIImage(named: jobsites[indexPath.row].picture)!
+        //cell.imageView?.image = image
+        //print("the loaded image: \(image)")
         cell.textLabel?.numberOfLines = 3
         cell.textLabel?.text = output
         cell.accessoryType = .detailDisclosureButton

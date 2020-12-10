@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateTaskViewController: UIViewController, UITextFieldDelegate {
+class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
@@ -33,8 +33,12 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate {
         //detailsText.text = "type here..."
         detailsText.layer.borderWidth = 1
         detailsText.layer.borderColor = UIColor.lightGray.cgColor
-        detailsText.textContainer.maximumNumberOfLines = 7
-        detailsText.textContainer.lineBreakMode = .byTruncatingTail
+        //detailsText.textContainer.maximumNumberOfLines = 7
+        //detailsText.textContainer.lineBreakMode = .byTruncatingTail
+        firstNameText.delegate = self
+        lastNameText.delegate = self
+        jobsiteText.delegate = self
+        detailsText.delegate = self
         // Do any additional setup after loading the view.
     }
     func upload(){
@@ -62,6 +66,27 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate {
         lastNameText.text = ""
         detailsText.text = ""
         jobsiteText.text = ""
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let max:Int
+        if(textField == jobsiteText){
+            max = 30
+        }else{
+            max = 10
+        }
+        
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= max
+        
+    }
+    private func textView(_ textView: UITextField, shouldChangeTextIn range: NSRange, replacementtext text: String) -> Bool {
+        let max = 20
+        let currentText = textView.text! as NSString
+        let changedText = currentText.replacingCharacters(in: range, with: text)
+        return changedText.count <= max
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
             let vc = segue.destination as! MenuViewController
