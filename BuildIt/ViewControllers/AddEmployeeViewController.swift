@@ -8,6 +8,9 @@
 import UIKit
 
 class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
+    
+   
+    
 
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
@@ -37,11 +40,13 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func submitButton(_ sender: Any) {
         if(firstNameText.text == ""||lastNameText.text == ""||userNameText.text == ""||passwordText.text == ""||phoneNumberText.text == ""){
             fillIn()
-        }else{
+        }else {
 
            upload()
         }
     }
+
+    
     func fillIn(){
         errorLabel.alpha = 1
     }
