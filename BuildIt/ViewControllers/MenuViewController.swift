@@ -17,7 +17,11 @@ class MenuViewController: UIViewController {
     var job = false
     var addE = false
     var createT = false
+    var logout = false
     
+    @IBAction func logoutButton(_ sender: Any) {
+        logout = true
+    }
     @IBOutlet weak var addEmploybutt: UIButton!
     @IBOutlet weak var createTaskButt: UIButton!
     
@@ -89,8 +93,11 @@ class MenuViewController: UIViewController {
             vc.lastName = self.lastName
             vc.admin = self.admin
             view.window?.rootViewController = vc
-            
-        }          }
+           
+        } else if(logout){
+            let vc = segue.destination as! LoginViewController
+            view.window?.rootViewController = vc
+        }         }
     
     /*
     // MARK: - Navigation

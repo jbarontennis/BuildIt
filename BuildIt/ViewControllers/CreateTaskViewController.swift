@@ -7,8 +7,15 @@
 
 import UIKit
 
-class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, HomeModelDelegate, jobsiteModelDelegate{
+    func itemsDownloaded(jobsite: [jobsite]) {
+        jobsitesArray = jobsite
+    }
+    
 
+    @IBOutlet weak var jobErrorLabel: UILabel!
+    @IBOutlet weak var lnErrorLabel: UILabel!
+    @IBOutlet weak var fnErrorLabel: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
@@ -23,18 +30,73 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
     var firstName = ""
     var lastName = ""
     var admin = ""
+    var jobModel = jobsiteModel()
+    var jobsitesArray = [jobsite]()
     @IBAction func submitButton(_ sender: Any) {
-        if(firstNameText.text == ""||lastNameText.text == ""||jobsiteText.text == ""||detailsText.text == ""){
+        fnErrorLabel.alpha = 0
+        lnErrorLabel.alpha = 0
+        jobErrorLabel.alpha = 0
+        errorLabel.alpha = 0
+        if(firstNameText.text == ""||lastNameText.text == ""||detailsText.text == ""){
             fillIn()
+        }else if(!checkForCorrectFName()){
+            fnErrorLabel.alpha = 1
+            
+        }else if(!checkForCorrectLName()){
+            lnErrorLabel.alpha = 1
+        }else if(!jobsiteSpellCheck()){
+            jobErrorLabel.alpha = 1
         }else{
-
            upload()
         }
+    }
+    func jobsiteSpellCheck()->Bool{
+        var flag = false
+        if(jobsiteText.text != ""){
+        for jobsite in jobsitesArray{
+            if(jobsiteText.text == jobsite.address ){
+                flag = true
+                return flag
+            }
+        }
+        return flag
+        }
+        flag = true
+        return flag
+    }
+    func nameSpellingError(){
+        
+    }
+    func checkForCorrectFName()->Bool{
+        var flag = false
+        for employee in employeesArray{
+            if(firstNameText.text == employee.firstName ){
+                flag = true
+                return flag
+            }
+        }
+        return flag
+    }
+    func checkForCorrectLName()->Bool{
+        var flag = false
+        for employee in employeesArray{
+            if(lastNameText.text == employee.lastName ){
+                flag = true
+                return flag
+            }
+        }
+        return flag
     }
     func fillIn(){
         errorLabel.alpha = 1
     }
     @IBAction func menuButton(_ sender: Any) {
+        
+    }
+    var employeesArray = [employees]()
+    var homeModel = HomeModel()
+    func itemsDownloaded(employees: [employees]) {
+        employeesArray = employees
         
     }
     override func viewDidLoad() {
@@ -44,11 +106,18 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         detailsText.layer.borderColor = UIColor.lightGray.cgColor
         //detailsText.textContainer.maximumNumberOfLines = 7
         //detailsText.textContainer.lineBreakMode = .byTruncatingTail
+        homeModel.getItems()
+        homeModel.delegate = self
+        jobModel.getItems()
+        jobModel.delegate = self
         firstNameText.delegate = self
         lastNameText.delegate = self
         jobsiteText.delegate = self
         detailsText.delegate = self
         errorLabel.alpha = 0
+        fnErrorLabel.alpha = 0
+        lnErrorLabel.alpha = 0
+        jobErrorLabel.alpha = 0
         // Do any additional setup after loading the view.
         let toolBar = UIToolbar()
         toolBar.sizeToFit()

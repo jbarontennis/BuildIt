@@ -12,6 +12,10 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
     var firstName = ""
     var lastName = ""
     var admin = ""
+    var popup = false
+    var specificEmploy = 0
+    var employf = ""
+    var employl = ""
     
     @IBOutlet weak var EmployeeLabel: UILabel!
     var employee = [employees]()
@@ -33,9 +37,20 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
         phone.append(contentsOf: temp[range3])
         cell.textLabel?.text = employee[indexPath.row].firstName + " " + employee[indexPath.row].lastName  + "\n" + "Phone Number: " + phone
         cell.textLabel?.numberOfLines = 2
+        if(admin == "1"){
+            cell.accessoryType = .detailDisclosureButton
+        }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath){
+        specificEmploy = indexPath.row
+        popup = true
+        employf = employee[indexPath.row].firstName
+        employl = employee[indexPath.row].lastName
+        performSegue(withIdentifier: "deleteVC", sender: self)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,11 +69,19 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
     @IBOutlet weak var employTable: UITableView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if(popup){
+            let vc = segue.destination as! deleteEmployeeViewController
+            vc.firstName = self.firstName
+            vc.lastName = self.lastName
+            vc.admin = self.admin
+            vc.employf = self.employf
+            vc.emplol = self.employl
+        }else{
         let vc = segue.destination as! MenuViewController
         vc.firstName = self.firstName
         vc.lastName = self.lastName
         vc.admin = self.admin
-        
+        }
     }    /*
     // MARK: - Navigation
 
