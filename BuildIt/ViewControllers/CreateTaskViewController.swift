@@ -7,8 +7,13 @@
 
 import UIKit
 
-class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, HomeModelDelegate{
+class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, HomeModelDelegate, jobsiteModelDelegate{
+    func itemsDownloaded(jobsite: [jobsite]) {
+        jobsitesArray = jobsite
+    }
+    
 
+    @IBOutlet weak var jobErrorLabel: UILabel!
     @IBOutlet weak var lnErrorLabel: UILabel!
     @IBOutlet weak var fnErrorLabel: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
@@ -25,19 +30,39 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
     var firstName = ""
     var lastName = ""
     var admin = ""
+    var jobModel = jobsiteModel()
+    var jobsitesArray = [jobsite]()
     @IBAction func submitButton(_ sender: Any) {
         fnErrorLabel.alpha = 0
         lnErrorLabel.alpha = 0
-        if(firstNameText.text == ""||lastNameText.text == ""||jobsiteText.text == ""||detailsText.text == ""){
+        jobErrorLabel.alpha = 0
+        errorLabel.alpha = 0
+        if(firstNameText.text == ""||lastNameText.text == ""||detailsText.text == ""){
             fillIn()
         }else if(!checkForCorrectFName()){
             fnErrorLabel.alpha = 1
             
         }else if(!checkForCorrectLName()){
             lnErrorLabel.alpha = 1
+        }else if(!jobsiteSpellCheck()){
+            jobErrorLabel.alpha = 1
         }else{
            upload()
         }
+    }
+    func jobsiteSpellCheck()->Bool{
+        var flag = false
+        if(jobsiteText.text != ""){
+        for jobsite in jobsitesArray{
+            if(jobsiteText.text == jobsite.address ){
+                flag = true
+                return flag
+            }
+        }
+        return flag
+        }
+        flag = true
+        return flag
     }
     func nameSpellingError(){
         
@@ -83,6 +108,8 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         //detailsText.textContainer.lineBreakMode = .byTruncatingTail
         homeModel.getItems()
         homeModel.delegate = self
+        jobModel.getItems()
+        jobModel.delegate = self
         firstNameText.delegate = self
         lastNameText.delegate = self
         jobsiteText.delegate = self
@@ -90,6 +117,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         errorLabel.alpha = 0
         fnErrorLabel.alpha = 0
         lnErrorLabel.alpha = 0
+        jobErrorLabel.alpha = 0
         // Do any additional setup after loading the view.
         let toolBar = UIToolbar()
         toolBar.sizeToFit()

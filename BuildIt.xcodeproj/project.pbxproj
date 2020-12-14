@@ -30,6 +30,7 @@
 		DF4308E5254A3575002925D5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4308E4254A3575002925D5 /* MenuViewController.swift */; };
 		DF53B7D72558DDA90092496A /* jobsiteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF53B7D62558DDA90092496A /* jobsiteModel.swift */; };
 		DF53B7DC2558DDC30092496A /* jobsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF53B7DB2558DDC30092496A /* jobsite.swift */; };
+		DF5C5B072587E0BD0066E0BF /* DeleteEmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C5B062587E0BD0066E0BF /* DeleteEmployeeViewController.swift */; };
 		DF67631F255B9B97003C4E78 /* JobInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF67631E255B9B97003C4E78 /* JobInfoViewController.swift */; };
 		DFC04BFF25462F8D006D8D49 /* EmployeeTableControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC04BFE25462F8D006D8D49 /* EmployeeTableControllerTableViewController.swift */; };
 		DFC04C0425462FB8006D8D49 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC04C0325462FB8006D8D49 /* TableViewCell.swift */; };
@@ -83,6 +84,7 @@
 		DF4308E4254A3575002925D5 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		DF53B7D62558DDA90092496A /* jobsiteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jobsiteModel.swift; sourceTree = "<group>"; };
 		DF53B7DB2558DDC30092496A /* jobsite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jobsite.swift; sourceTree = "<group>"; };
+		DF5C5B062587E0BD0066E0BF /* DeleteEmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEmployeeViewController.swift; sourceTree = "<group>"; };
 		DF67631E255B9B97003C4E78 /* JobInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoViewController.swift; sourceTree = "<group>"; };
 		DFC04BFE25462F8D006D8D49 /* EmployeeTableControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableControllerTableViewController.swift; sourceTree = "<group>"; };
 		DFC04C0325462FB8006D8D49 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				DF67631E255B9B97003C4E78 /* JobInfoViewController.swift */,
 				DFD88E0925733F6E00C60CC1 /* AddEmployeeViewController.swift */,
 				DF3E72D325774D5A00C7453D /* CreateTaskViewController.swift */,
+				DF5C5B062587E0BD0066E0BF /* DeleteEmployeeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				DF4308BA254F58A5001C9850 /* Constants.swift in Sources */,
 				DF3855322538D945008BF99D /* ViewController.swift in Sources */,
 				DF3E5FE6253D0149004646BD /* HomeModel.swift in Sources */,
+				DF5C5B072587E0BD0066E0BF /* DeleteEmployeeViewController.swift in Sources */,
 				DF67631F255B9B97003C4E78 /* JobInfoViewController.swift in Sources */,
 				DFC04C0425462FB8006D8D49 /* TableViewCell.swift in Sources */,
 				DF38552E2538D945008BF99D /* AppDelegate.swift in Sources */,
