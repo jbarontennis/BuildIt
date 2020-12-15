@@ -20,11 +20,12 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
     @IBOutlet weak var EmployeeLabel: UILabel!
     var employee = [employees]()
     var homeModel = HomeModel()
+    //number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employee.count
     }
     
-    
+    //set up each cell for the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "aCell", for: indexPath)
         let temp = (employee[indexPath.row].phoneNumber) as String
@@ -42,7 +43,7 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
         }
         return cell
     }
-    
+    //add button for each row on the table
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath){
         specificEmploy = indexPath.row
         popup = true
@@ -51,6 +52,7 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
         performSegue(withIdentifier: "deleteVC", sender: self)
         
     }
+    //set up
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +62,7 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
         homeModel.getItems()
         homeModel.delegate = self
     }
+    //gets the list of employees
     func itemsDownloaded(employees: [employees]){
         employee = employees
         DispatchQueue.main.async {
@@ -67,7 +70,7 @@ class EmployeesViewController: UIViewController, HomeModelDelegate, UITableViewD
         }    }
     
     @IBOutlet weak var employTable: UITableView!
-    
+    //send variables to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if(popup){
             let vc = segue.destination as! deleteEmployeeViewController

@@ -27,6 +27,7 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var adminButton: UISwitch!
     @IBOutlet weak var adminLabel: UILabel!
+    //switch to set user as a admin
     @IBAction func adminSwitch(_ sender: Any) {
         if(adminButton.isOn){
             adm = "1"
@@ -58,7 +59,7 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
     var firstName = ""
     var lastName = ""
     var admin = ""
-    
+    //set up
     override func viewDidLoad() {
         super.viewDidLoad()
         lastNameText.delegate = self
@@ -79,10 +80,11 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
         phoneNumberText.inputAccessoryView = toolBar
         errorLabel.alpha = 0
     }
+    //done button
     @objc func doneClicked(){
         view.endEditing(true)
     }
-
+    //sends data to php script
     func upload(){
         let url = NSURL(string: "http://192.168.1.122/capstone/addEmploy.php")
         var request = URLRequest(url: url! as URL)
@@ -113,13 +115,14 @@ class AddEmployeeViewController: UIViewController, UITextFieldDelegate {
         errorLabel.alpha = 0
         
     }
+    //sends variables to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
             let vc = segue.destination as! MenuViewController
             vc.firstName = self.firstName
             vc.lastName = self.lastName
             vc.admin = self.admin
     }
-   
+   //character limit for text fields
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let max:Int
         if(textField == userNameText || textField == passwordText){

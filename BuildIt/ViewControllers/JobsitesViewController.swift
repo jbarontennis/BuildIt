@@ -8,25 +8,18 @@
 import UIKit
 
 class JobsitesViewController: UIViewController, jobsiteModelDelegate, UITableViewDataSource, UITableViewDelegate{
+    //number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return jobsites.count
     }
     let myImages: [UIImage] = []
-    
+    //setup table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath)
-       // cell.imageView?.frame = CGRect(x: (cell.imageView?.frame.origin.x)!, y: (cell.imageView?.frame.origin.y)!, width: 10, height: 10)
         
         cell.imageView?.image = UIImage(named: jobsites[indexPath.row].picture)!
         
         let output =  "Address: " + jobsites[indexPath.row].address + "\n" + "Completion date: " + jobsites[indexPath.row].completion
-       // Image("hd")
-            
-        
-        //let image : UIImage = UIImage(named: jobsites[indexPath.row].picture)!
-        
-        //cell.imageView?.image = image
-        //print("the loaded image: \(image)")
         cell.textLabel?.numberOfLines = 4
         cell.textLabel?.text = output
         cell.accessoryType = .detailDisclosureButton
@@ -34,7 +27,7 @@ class JobsitesViewController: UIViewController, jobsiteModelDelegate, UITableVie
     
      return cell
     }
-    
+    //get data for jobsites
     func itemsDownloaded(jobsite: [jobsite]) {
         jobsites = jobsite
         DispatchQueue.main.async {
@@ -49,6 +42,7 @@ class JobsitesViewController: UIViewController, jobsiteModelDelegate, UITableVie
     var jobsites = [jobsite]()
     let jobsitesModel = jobsiteModel()
     @IBOutlet weak var jobTable: UITableView!
+    //set up
     override func viewDidLoad() {
         super.viewDidLoad()
         jobTable.delegate = self
@@ -58,11 +52,13 @@ class JobsitesViewController: UIViewController, jobsiteModelDelegate, UITableVie
         jobsitesModel.getItems()
         jobsitesModel.delegate = self        // Do any additional setup after loading the view.
     }
+    //set up buttons for table
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath){
         specificTask = jobsites[indexPath.row].address
         popup = true
         performSegue(withIdentifier: "jobInfoSegue", sender: self)
     }
+    //send data to next view controller
         override func prepare(for segue: UIStoryboardSegue, sender: Any?){
             if(popup){
                 popup = false

@@ -49,6 +49,7 @@ class MenuViewController: UIViewController {
         setUp()
         // Do any additional setup after loading the view.
     }
+    //sets up buttons depending on admin or employee
     func setUp(){
         if(admin == "1"){
             addEmploybutt.isHidden = false
@@ -58,6 +59,7 @@ class MenuViewController: UIViewController {
             createTaskButt.isHidden = true
         }
     }
+    //sends variables to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(task){
             let vc = segue.destination as! MyTasksViewController

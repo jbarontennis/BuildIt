@@ -8,6 +8,7 @@
 import UIKit
 
 class JobInfoViewController: UIViewController, JobsiteInfoDelegate,  UITableViewDataSource, UITableViewDelegate{
+    //myTasks are delegated here
     func itemsDownloaded(myTasks: [myTasks]) {
         myTask = myTasks
         DispatchQueue.main.async {
@@ -19,11 +20,12 @@ class JobInfoViewController: UIViewController, JobsiteInfoDelegate,  UITableView
     
     var myTask = [myTasks]()
     var jobsite = JobsiteInfo()
+    //number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myTask.count
     }
     
-    
+    //set up each cell for table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "aCell", for: indexPath)
         let output = myTask[indexPath.row].firstName + " " + myTask[indexPath.row].lastName
@@ -37,6 +39,7 @@ class JobInfoViewController: UIViewController, JobsiteInfoDelegate,  UITableView
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var jobTable: UITableView!
+    //set up
     override func viewDidLoad() {
         super.viewDidLoad()
         jobTable.delegate = self

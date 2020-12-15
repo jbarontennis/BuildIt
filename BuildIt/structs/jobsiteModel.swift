@@ -3,7 +3,7 @@
 //  BuildIt
 //
 //  Created by James B. on 11/8/20.
-//
+//used to delegate to jobsite view controller
 
 import UIKit
 protocol jobsiteModelDelegate {

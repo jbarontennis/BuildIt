@@ -27,6 +27,7 @@ class deleteEmployeeViewController: UIViewController {
         label.text = "Do you want to delete " + employf + " " + emplol + "?"
         // Do any additional setup after loading the view.
     }
+    //sends data to php script
     func upload(){
         let url = NSURL(string: "http://192.168.1.122/capstone/deleteEmploy.php")
         var request = URLRequest(url: url! as URL)
@@ -43,6 +44,7 @@ class deleteEmployeeViewController: UIViewController {
             uploadTask.resume()
         }
     }
+    //sends data to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let vc = segue.destination as! EmployeesViewController
         vc.firstName = self.firstName

@@ -23,6 +23,7 @@ class MyTasksViewController: UIViewController, TaskModelDelegate, UITableViewDat
     var specificTask = 0
     var answer = false
     var popup = false
+    //gets list of my tasks
     func itemsDownloaded(myTasks: [myTasks]) {
         task = myTasks
         DispatchQueue.main.async {
@@ -30,12 +31,12 @@ class MyTasksViewController: UIViewController, TaskModelDelegate, UITableViewDat
     }
         
     }
-    
+    //number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let tmp = task.count
         return tmp
     }
-    
+    //sets up each row for the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
@@ -47,6 +48,7 @@ class MyTasksViewController: UIViewController, TaskModelDelegate, UITableViewDat
         
          return cell
     }
+    //gives functionality to button for each cell in the table
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath){
         specificTask = indexPath.row
         popup = true
@@ -55,7 +57,7 @@ class MyTasksViewController: UIViewController, TaskModelDelegate, UITableViewDat
         
     }
     
-    
+    //set up
     override func viewDidLoad() {
         super.viewDidLoad()
         myTaskTable.delegate = self
@@ -70,7 +72,7 @@ class MyTasksViewController: UIViewController, TaskModelDelegate, UITableViewDat
        
         
     }
-    
+    //sends variables to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if(!popup){
             let vc = segue.destination as! MenuViewController

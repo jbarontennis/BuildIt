@@ -24,7 +24,7 @@ class CompleteTaskViewController: UIViewController {
     @IBAction func cancelButton(_ sender: Any) {
         answer = false
         performSegue(withIdentifier: "endOfPopup", sender: self)    }
-    
+    //send data to php script
     func upload(number:String){
         let url = NSURL(string: "http://192.168.1.122/capstone/completeTask.php")
         var request = URLRequest(url: url! as URL)
@@ -41,11 +41,13 @@ class CompleteTaskViewController: UIViewController {
             uploadTask.resume()
         }
     }
+    //set up
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    //sends variables to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let vc = segue.destination as! MyTasksViewController
         vc.firstName = self.firstName

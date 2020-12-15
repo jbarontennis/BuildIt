@@ -3,7 +3,7 @@
 //  BuildIt
 //
 //  Created by James B. on 10/18/20.
-//
+//used to delgate all the employees of the company
 
 import UIKit
 

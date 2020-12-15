@@ -8,6 +8,7 @@
 import UIKit
 
 class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, HomeModelDelegate, jobsiteModelDelegate{
+    //jobsites are delegated here
     func itemsDownloaded(jobsite: [jobsite]) {
         jobsitesArray = jobsite
     }
@@ -50,6 +51,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
            upload()
         }
     }
+    //checks is jobsite is valid
     func jobsiteSpellCheck()->Bool{
         var flag = false
         if(jobsiteText.text != ""){
@@ -64,9 +66,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         flag = true
         return flag
     }
-    func nameSpellingError(){
-        
-    }
+    //checks firstName validity
     func checkForCorrectFName()->Bool{
         var flag = false
         for employee in employeesArray{
@@ -77,6 +77,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
         return flag
     }
+    //checks lastName validity
     func checkForCorrectLName()->Bool{
         var flag = false
         for employee in employeesArray{
@@ -87,6 +88,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
         return flag
     }
+    //displays error label if not all blanks are filled in
     func fillIn(){
         errorLabel.alpha = 1
     }
@@ -95,10 +97,12 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     var employeesArray = [employees]()
     var homeModel = HomeModel()
+    //employees are delegated here
     func itemsDownloaded(employees: [employees]) {
         employeesArray = employees
         
     }
+    //set up
     override func viewDidLoad() {
         super.viewDidLoad()
         //detailsText.text = "type here..."
@@ -131,10 +135,11 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         jobsiteText.inputAccessoryView = toolBar
         detailsText.inputAccessoryView = toolBar
     }
+    //done button for keyboard
     @objc func doneClicked(){
         view.endEditing(true)
     }
-    
+    //sends data to php script
     func upload(){
         let url = NSURL(string: "http://192.168.1.122/capstone/createTask.php")
         var request = URLRequest(url: url! as URL)
@@ -162,7 +167,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         jobsiteText.text = ""
         errorLabel.alpha = 0
     }
-    
+    //character limit for text fields
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let max:Int
         if(textField == jobsiteText){
@@ -176,6 +181,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         return newString.length <= max
         
     }
+    //character limit for text view
     private func textView(_ textView: UITextField, shouldChangeTextIn range: NSRange, replacementtext text: String) -> Bool {
         let max = 20
         let currentText = textView.text! as NSString
@@ -183,6 +189,7 @@ class CreateTaskViewController: UIViewController, UITextFieldDelegate, UITextVie
         return changedText.count <= max
         
     }
+    //sends variables to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
             let vc = segue.destination as! MenuViewController
             vc.firstName = self.firstName

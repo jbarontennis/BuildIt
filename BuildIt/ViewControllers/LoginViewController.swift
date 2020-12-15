@@ -27,6 +27,7 @@ class LoginViewController: UIViewController, HomeModelDelegate, UITextFieldDeleg
     var fName = ""
     var lName = ""
     var admin = ""
+    //set up
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
@@ -45,9 +46,11 @@ class LoginViewController: UIViewController, HomeModelDelegate, UITextFieldDeleg
         usernametext.inputAccessoryView = toolBar
         passwordtext.inputAccessoryView = toolBar
     }
+    //done button for keyboard
     @objc func doneClicked(){
         view.endEditing(true)
     }
+    //character limit for text fields
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let max = 30
         
@@ -57,9 +60,11 @@ class LoginViewController: UIViewController, HomeModelDelegate, UITextFieldDeleg
         return newString.length <= max
         
     }
+    //set error label invisble
     func setUpElements(){
         errorlabel.alpha = 0
     }
+    
     func validatePass (u:String,p:String)->Bool{
         let count = user.count
         var i = 0
@@ -86,6 +91,7 @@ class LoginViewController: UIViewController, HomeModelDelegate, UITextFieldDeleg
             self.loginError()
         }
     }
+    //gets employees from homeModel
     func itemsDownloaded(employees: [employees]) {
         
         for i in employees{
@@ -103,9 +109,11 @@ class LoginViewController: UIViewController, HomeModelDelegate, UITextFieldDeleg
         view.window?.rootViewController = MyTasksVC
         view.window?.makeKeyAndVisible()
     }
+    //displays error label
     func loginError(){
         errorlabel.alpha = 1
     }
+    //sends variables to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let vc = segue.destination as! MyTasksViewController
         vc.firstName = self.fName
