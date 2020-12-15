@@ -44,13 +44,14 @@ class JobsiteInfo: NSObject {
             let site = jsonDict["jobsite"]!
             let first = jsonDict["firstName"]!
             let last = jsonDict["lastName"]!
+            if(site == sites){
             if(firsts.isEmpty){
                 firsts.append(first)
                 lasts.append(last)
             }else{
                 var i = 0
                 while(i<firsts.count){
-                    if(firsts[i] == first && lasts[i] == last){
+                    if(firsts[i] == first && lasts[i] == last ){
                         flag = true
                         break
                     }else{
@@ -66,7 +67,7 @@ class JobsiteInfo: NSObject {
                 taskArray.append(tasks)
             }
             }
-            
+        }
             delegate?.itemsDownloaded(myTasks: taskArray)
         }catch{
             print("error")
